@@ -4,7 +4,6 @@ import Header from './components/Header'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import About from './components/About'
-import Footer from './components/footer'
 
 function App() {
 const title = 'Task tracker'
@@ -101,8 +100,8 @@ const deleteTask = async (id) => {
           <Route path='/about' element={<About />} />
         </Routes>
     </div>
-    <Footer />
     </Router>
   )
 }
+
 export default App
