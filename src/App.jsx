@@ -79,8 +79,7 @@ const deleteTask = async (id) => {
     <Router >
     <div className='container'>  
       <Header
-       title={title} onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask}
-       />
+       title={title} onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
         <Routes>
         <Route
             path='/'
