@@ -1,4 +1,22 @@
 {
   "tasks": [
+    {
+      "text": "ijop",
+      "day": "0097-07-08",
+      "reminder": false,
+      "id": 1
+    },
+    {
+      "text": "lomp",
+      "day": "0790-08-09",
+      "reminder": false,
+      "id": 2
+    },
+    {
+      "text": "Hi my name is mote",
+      "day": "1998-11-21",
+      "reminder": true,
+      "id": 3
+    }
   ]
 }
