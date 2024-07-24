@@ -12,7 +12,7 @@ function App() {
   const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([]);
 
-  //
+  // useEffect is the first function that is triggered when the page first loads
   useEffect(() => {
     const getTasks = async () => {
       const tasksFromServer = await fetchTasks();
@@ -29,7 +29,7 @@ function App() {
     return data;
   };
 
-  //Fetch tasks
+  //Fetch a single task
   const fetchTask = async (id) => {
     const res = await fetch(`http://localhost:5000/tasks/${id}`);
     const data = await res.json();
@@ -50,7 +50,7 @@ function App() {
     setTasks([...tasks, data]);
   };
 
-  //Toggle Task
+  //mark task as done / not done (toggle task)
   const toggleTask = async (id) => {
     const taskToToggle = await fetchTask(id);
     const updatedTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
@@ -99,7 +99,7 @@ function App() {
                     onToggle={toggleTask}
                   />
                 ) : (
-                  "No Tasks To Show"
+                  "No Tasks to show"
                 )}
               </>
             }
