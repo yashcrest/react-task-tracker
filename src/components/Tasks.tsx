@@ -1,11 +1,19 @@
 import Task from "./Task";
+import React from "react";
 
-export default function Tasks ({tasks, onDelete, onToggle }) {
-    return (
-        <>
-            {tasks.map((task,index)=> (       
-                <Task key={index} task={task} onDelete={onDelete} onToggle={onToggle}/>
-            ))}
-        </>
-    )
-}
+const Tasks = ({ tasks, onDelete, onToggle }) => {
+  return (
+    <>
+      {tasks.map((task, index) => {
+        <Task
+          key={index}
+          task={task}
+          onDelete={onDelete}
+          onToggle={ontoggle}
+        />;
+      })}
+    </>
+  );
+};
+
+export default Tasks;
