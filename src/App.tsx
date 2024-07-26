@@ -12,6 +12,8 @@ function App() {
   const [showAddTask, setShowAddTask] = useState(false);
   const [tasks, setTasks] = useState([]);
 
+  //typescript logic
+
   // useEffect is the first function that is triggered when the page first loads
   useEffect(() => {
     const getTasks = async () => {
