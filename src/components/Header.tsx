@@ -1,7 +1,13 @@
 import React from "react";
 import Button from "./Button";
 
-const Header = ({ title, onAdd, showAdd }) => {
+type HeaderProps = {
+  onAdd: () => void;
+  showAdd: boolean;
+};
+
+const Header = ({ onAdd, showAdd }: HeaderProps) => {
+  const title: string = "Task Tracker";
   return (
     <header className="header">
       <h1 className="text-primary">{title}</h1>

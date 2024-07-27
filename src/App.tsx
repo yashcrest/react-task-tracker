@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
@@ -6,13 +7,11 @@ import AddTask from "./components/AddTask";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import PageNotFound from "./components/Pages/PageNotFound";
+import { type ITask } from "./components/types";
 
 function App() {
-  const title = "Task tracker";
   const [showAddTask, setShowAddTask] = useState(false);
-  const [tasks, setTasks] = useState([]);
-
-  //typescript logic
+  const [tasks, setTasks] = useState<ITask[]>([]); // of type ITask. initially empty Array
 
   // useEffect is the first function that is triggered when the page first loads
   useEffect(() => {
@@ -24,7 +23,7 @@ function App() {
   }, []);
 
   //Fetch tasks
-  const fetchTasks = async () => {
+  const fetchTasks = async (): Promise<ITask[]> => {
     const res = await fetch("http://localhost:5000/tasks");
     const data = await res.json();
     console.log(data);
@@ -32,7 +31,7 @@ function App() {
   };
 
   //Fetch a single task
-  const fetchTask = async (id) => {
+  const fetchTask = async (id: number): Promise<ITask> => {
     const res = await fetch(`http://localhost:5000/tasks/${id}`);
     const data = await res.json();
     console.log(data);
@@ -40,7 +39,7 @@ function App() {
   };
 
   //Add Task
-  const addTask = async (task) => {
+  const addTask = async (task: Omit<ITask, "id">): Promise<void> => {
     const res = await fetch("http://localhost:5000/tasks", {
       method: "POST",
       headers: {
@@ -53,7 +52,7 @@ function App() {
   };
 
   //mark task as done / not done (toggle task)
-  const toggleTask = async (id) => {
+  const toggleTask = async (id: number): Promise<void> => {
     const taskToToggle = await fetchTask(id);
     const updatedTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
@@ -75,7 +74,7 @@ function App() {
   };
 
   //Delete Task
-  const deleteTask = async (id) => {
+  const deleteTask = async (id: number): Promise<void> => {
     await fetch(`http://localhost:5000/tasks/${id}`, { method: "DELETE" });
     setTasks(tasks.filter((task) => id !== task.id));
   };
@@ -84,8 +83,7 @@ function App() {
     <Router>
       <div className="container">
         <Header
-          title={title}
-          onAdd={() => setShowAddTask(!showAddTask)}
+          onAdd={() => setShowAddTask(!showAddTask)} //this is function itself
           showAdd={showAddTask}
         />
         <Routes>

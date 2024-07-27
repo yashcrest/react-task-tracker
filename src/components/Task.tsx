@@ -1,7 +1,15 @@
+import React from "react";
 import { IconContext } from "react-icons";
 import { AiFillDelete } from "react-icons/ai";
+import { ITask } from "./types";
 
-const Task = ({ task, onDelete, onToggle }) => {
+type TaskProps = {
+  task: ITask;
+  onDelete: (id: number) => void;
+  onToggle: (id: number) => void;
+};
+
+const Task = ({ task, onDelete, onToggle }: TaskProps) => {
   return (
     <div
       className={`task ${task.reminder ? "reminder" : ""}`}

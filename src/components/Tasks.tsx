@@ -1,15 +1,22 @@
 import Task from "./Task";
 import React from "react";
+import { ITask } from "./types";
 
-const Tasks = ({ tasks, onDelete, onToggle }) => {
+type TasksProps = {
+  tasks: ITask[];
+  onDelete: (id: number) => void;
+  onToggle: (id: number) => void;
+};
+
+const Tasks = ({ tasks, onDelete, onToggle }: TasksProps) => {
   return (
     <>
-      {tasks.map((task, index) => {
+      {tasks.map((task: ITask, index: number) => {
         <Task
           key={index}
           task={task}
           onDelete={onDelete}
-          onToggle={ontoggle}
+          onToggle={onToggle}
         />;
       })}
     </>
