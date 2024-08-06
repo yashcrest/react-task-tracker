@@ -1,5 +1,3 @@
-import React from "react";
-import { IconContext } from "react-icons";
 import { AiFillDelete } from "react-icons/ai";
 import { ITask } from "./types";
 
