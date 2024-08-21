@@ -11,12 +11,12 @@ const Task = ({ task, onDelete, onToggle }: TaskProps) => {
   return (
     <div
       className={`task ${task.reminder ? "reminder" : ""}`}
-      onDoubleClick={() => onToggle(task.id)}
+      onDoubleClick={() => onToggle(task.id!)}
     >
       <h5>
         {task.text}{" "}
         <AiFillDelete
-          onClick={() => onDelete(task.id)}
+          onClick={() => onDelete(task.id!)}
           style={{
             color: "#dc3545",
             cursor: "pointer",
