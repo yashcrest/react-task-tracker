@@ -5,12 +5,13 @@ type AddTaskProps = {
   onAdd: (task: ITask) => void;
 };
 const AddTask = ({ onAdd }: AddTaskProps) => {
+  //   const [id, setId] = useState<number>(0);
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
   const [reminder, setReminder] = useState(false);
   const [showError, setShowError] = useState(false);
 
-  const onSubmit = (e) => {
+  const onSubmit = (e: any) => {
     e.preventDefault();
     if (!text) {
       setShowError(true);
@@ -64,7 +65,7 @@ const AddTask = ({ onAdd }: AddTaskProps) => {
         <input
           type="checkbox"
           checked={reminder}
-          value={reminder}
+          value={text}
           onChange={(e) => setReminder(e.currentTarget.checked)}
         />
       </div>

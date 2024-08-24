@@ -9,7 +9,7 @@ import PageNotFound from "./components/Pages/PageNotFound";
 import { type ITask } from "./components/types";
 
 function App() {
-  const [showAddTask, setShowAddTask] = useState(false);
+  const [addBtn, setaddBtn] = useState(false);
   const [tasks, setTasks] = useState<ITask[]>([]); // of type ITask. initially empty Array
 
   // useEffect is the first function that is triggered when the page first loads
@@ -38,7 +38,7 @@ function App() {
   };
 
   //Add Task
-  const addTask = async (task: Omit<ITask, "id">): Promise<void> => {
+  const addTask = async (task: ITask) => {
     const res = await fetch("http://localhost:5000/tasks", {
       method: "POST",
       headers: {
@@ -82,15 +82,15 @@ function App() {
     <Router>
       <div className="container">
         <Header
-          onAdd={() => setShowAddTask(!showAddTask)} //this is function itself
-          showAdd={showAddTask}
+          onAdd={() => setaddBtn(!addBtn)} //this is function itself
+          showAdd={addBtn}
         />
         <Routes>
           <Route
             path="/"
             element={
               <>
-                {showAddTask && <AddTask onAdd={addTask} />}
+                {addBtn && <AddTask onAdd={addTask} />}
                 {tasks.length > 0 ? (
                   <Tasks
                     tasks={tasks}
