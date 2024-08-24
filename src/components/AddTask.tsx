@@ -5,7 +5,6 @@ type AddTaskProps = {
   onAdd: (task: ITask) => void;
 };
 const AddTask = ({ onAdd }: AddTaskProps) => {
-  //   const [id, setId] = useState<number>(0);
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
   const [reminder, setReminder] = useState(false);
